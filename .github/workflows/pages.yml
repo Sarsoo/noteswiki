@@ -34,7 +34,7 @@ jobs:
         run: sudo apt install hugo
 
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           submodules: true
 
@@ -50,13 +50,14 @@ jobs:
       - name: Build Content
         run: python ./build-prod.py
 
-      - uses: actions/setup-python@v5
+      - name: Set up Python
+        uses: actions/setup-python@v5.5.0
         with:
           python-version: '3.13'
 
       - name: Setup Pages
         id: pages
-        uses: actions/configure-pages@v1
+        uses: actions/configure-pages@v5.0.0
 
       - name: Build with Hugo
         run: |
@@ -68,7 +69,7 @@ jobs:
         run: echo wiki.sarsoo.xyz > ./public/CNAME
         
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v1
+        uses: actions/upload-pages-artifact@v3.0.1
         with:
           path: ./public
 
@@ -83,4 +84,4 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v1
+        uses: actions/deploy-pages@v4.0.5
