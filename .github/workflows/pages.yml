@@ -81,9 +81,9 @@ jobs:
 
   # Deployment job
   deploy:
-    name: Deploy Staging
+    name: Deploy
     environment:
-      name: staging
+      name: prod
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     needs: build
